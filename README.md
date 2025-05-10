@@ -64,6 +64,19 @@ For Claude to connect to this bridge, you need to configure the MCP settings pro
    }
    ```
 
+3. **Use local combined server for windows**:
+   ```json
+   {
+    "lmstudio-mcp": {
+      "command": "cmd.exe",
+      "args": [
+        "/c",
+        "cd C:\\Users\\username\\...\\LMStudio-MCP && C:\\Users\\username\\.pyenv\\pyenv-win\\shims\\python lmstudio_combined.py"
+      ]
+    }
+   }
+   ```
+
 For detailed MCP configuration instructions, see [MCP_CONFIGURATION.md](MCP_CONFIGURATION.md).
 
 ## Usage
@@ -82,11 +95,14 @@ For detailed MCP configuration instructions, see [MCP_CONFIGURATION.md](MCP_CONF
 ## Available Functions
 
 The bridge provides the following functions:
-
+### basic functions
 - `health_check()`: Verify if LM Studio API is accessible
 - `list_models()`: Get a list of all available models in LM Studio
 - `get_current_model()`: Identify which model is currently loaded
 - `chat_completion(prompt, system_prompt, temperature, max_tokens)`: Generate text from your local model
+### enhanced functions
+- `enhanced_chat_completion(prompt, system_prompt, temperature, max_tokens, model, stop_sequences, top_p)`: Generate text from your local model with enhanced options
+- `batch_chat_completion(prompts, system_prompt)`: Process multiple prompts in a batch
 
 ## Known Limitations
 
